@@ -1,0 +1,14 @@
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.exe
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.deps.json
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.runtimeconfig.json
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.pdb
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.AssemblyInfoInputs.cache
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.AssemblyInfo.cs
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.csproj.CoreCompileInputs.cache
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\refint\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.pdb
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.genruntimeconfig.cache
+C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\ref\DGD208-Spring2025-AkselEbemigiryan.dll
