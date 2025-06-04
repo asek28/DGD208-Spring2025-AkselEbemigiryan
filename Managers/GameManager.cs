@@ -49,15 +49,15 @@ namespace DinosaurSimulator.Managers
                     dino.UpdateStats();
                 }
 
-                // Sleep stat decreases every 10 seconds
-                await Task.Delay(10000, cancellationToken);
+                // Sleep stat decreases every 5 seconds
+                await Task.Delay(5000, cancellationToken);
                 foreach (var dino in dinosaurs.Where(d => d.IsAlive))
                 {
                     dino.UpdateStat(-1, StatType.Sleep);
                 }
 
-                // Feed and Fun decrease every 5 seconds
-                await Task.Delay(5000, cancellationToken);
+                // Feed and Fun decrease every 2.5 seconds
+                await Task.Delay(2500, cancellationToken);
                 foreach (var dino in dinosaurs.Where(d => d.IsAlive))
                 {
                     dino.UpdateStat(-1, StatType.Feed);
@@ -143,6 +143,24 @@ namespace DinosaurSimulator.Managers
                 {
                     dinosaurs.Add(dinosaur);
                     Console.WriteLine($"\nCongratulations! You've adopted {dinosaur.Name} the {dinosaur.Type}!");
+                    
+                    // Show ASCII art based on dinosaur type
+                    switch (dinosaur.Type)
+                    {
+                        case DinoType.TyrannosaurusRex:
+                            Console.WriteLine(AsciiArt.GetTRex());
+                            break;
+                        case DinoType.Pterosaur:
+                            Console.WriteLine(AsciiArt.GetPterosaur());
+                            break;
+                        case DinoType.Triceratops:
+                            Console.WriteLine(AsciiArt.GetTriceratops());
+                            break;
+                        case DinoType.Mosasaurus:
+                            Console.WriteLine(AsciiArt.GetMosasaurus());
+                            break;
+                    }
+                    
                     dinosaur.DisplayStats();
                 }
             }
@@ -290,13 +308,8 @@ namespace DinosaurSimulator.Managers
         {
             if (!dino.IsAlive) return;
 
-            Console.WriteLine($"\nPutting {dino.Name} to sleep...");
-            await Task.Delay(2000);
+            SleepAnimation.ShowSleepingDino(dino.Name);
             dino.UpdateStat(100 - dino.Sleep, StatType.Sleep);
-            if (dino.IsAlive)
-            {
-                Console.WriteLine($"{dino.Name} is now sleeping peacefully!");
-            }
         }
 
         private void DisplayCredits()
