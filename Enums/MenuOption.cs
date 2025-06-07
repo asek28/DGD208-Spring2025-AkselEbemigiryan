@@ -9,6 +9,7 @@ namespace DinosaurSimulator.Enums
         AdoptDinosaur = 1,
         ViewStats = 2,
         InteractWithDinosaur = 3,
-        Credits = 4
+        Credits = 4,
+        Tutorial = 5
     }
 } 

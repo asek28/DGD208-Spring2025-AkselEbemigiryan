@@ -49,15 +49,15 @@ namespace DinosaurSimulator.Managers
                     dino.UpdateStats();
                 }
 
-                // Sleep stat decreases every 5 seconds
-                await Task.Delay(5000, cancellationToken);
+                // Sleep stat decreases every 3.5 seconds (was 5)
+                await Task.Delay(3500, cancellationToken);
                 foreach (var dino in dinosaurs.Where(d => d.IsAlive))
                 {
                     dino.UpdateStat(-1, StatType.Sleep);
                 }
 
-                // Feed and Fun decrease every 2.5 seconds
-                await Task.Delay(2500, cancellationToken);
+                // Feed and Fun decrease every 2.25 seconds (was 2.5)
+                await Task.Delay(2250, cancellationToken);
                 foreach (var dino in dinosaurs.Where(d => d.IsAlive))
                 {
                     dino.UpdateStat(-1, StatType.Feed);
@@ -73,6 +73,7 @@ namespace DinosaurSimulator.Managers
             Console.WriteLine("2. View Dinosaur Stats");
             Console.WriteLine("3. Interact with a Dinosaur");
             Console.WriteLine("4. Credits");
+            Console.WriteLine("5. Tutorial");
             Console.WriteLine("0. Exit Game");
             Console.Write("\nChoose an option by numbers: ");
         }
@@ -109,6 +110,10 @@ namespace DinosaurSimulator.Managers
 
                 case MenuOption.Credits:
                     DisplayCredits();
+                    break;
+
+                case MenuOption.Tutorial:
+                    DisplayTutorial();
                     break;
 
                 default:
@@ -290,16 +295,25 @@ namespace DinosaurSimulator.Managers
             if (int.TryParse(Console.ReadLine(), out int choice) && choice > 0 && choice <= foods.Count)
             {
                 var selectedFood = foods[choice - 1];
-                Console.WriteLine($"\nFeeding {dino.Name} with {selectedFood.Name}...");
-                await Task.Delay(2000);
+                string foodEmoji = selectedFood.Type switch
+                {
+                    FoodType.Meat => "🥩",
+                    FoodType.Fish => "🐟",
+                    FoodType.Plants => "🌿",
+                    FoodType.Insects => "🪲",
+                    FoodType.Special => "⭐",
+                    _ => "🍖"
+                };
+
+                EatAnimation.ShowEatingDino(dino.Name, foodEmoji, selectedFood.Name);
 
                 dino.UpdateStat(selectedFood.FeedEffect, StatType.Feed);
                 dino.UpdateStat(selectedFood.FunEffect, StatType.Fun);
                 dino.UpdateStat(selectedFood.SleepEffect, StatType.Sleep);
 
-                if (dino.IsAlive)
+                if (!dino.IsAlive)
                 {
-                    Console.WriteLine($"{dino.Name} enjoyed the meal!");
+                    Console.WriteLine($"{dino.Name} couldn't handle the food...");
                 }
             }
         }
@@ -310,6 +324,13 @@ namespace DinosaurSimulator.Managers
 
             SleepAnimation.ShowSleepingDino(dino.Name);
             dino.UpdateStat(100 - dino.Sleep, StatType.Sleep);
+            
+            // Dinosaur wakes up hungry
+            Random random = new Random();
+            int hungerIncrease = random.Next(10, 16); // Random value between 10-15
+            dino.UpdateStat(-hungerIncrease, StatType.Feed);
+            Console.WriteLine($"{dino.Name} wakes up feeling a bit hungry...");
+            Thread.Sleep(2000);
         }
 
         private void DisplayCredits()
@@ -317,6 +338,20 @@ namespace DinosaurSimulator.Managers
             Console.WriteLine($"\nGame: {GAME_NAME}");
             Console.WriteLine($"Creator: {CREATOR_NAME}");
             Console.WriteLine($"Student Number: {STUDENT_NUMBER}");
+        }
+
+        private void DisplayTutorial()
+        {
+            Console.WriteLine("\n=== Dinosaur Care Tutorial ===");
+            Console.WriteLine("Welcome to the Dinosaur Caretaking Simulator! Here's what you need to know:");
+            Console.WriteLine("\n1. Your main goal is to take care of your adopted dinosaurs by managing their Feed, Fun, and Sleep stats.");
+            Console.WriteLine("2. Each dinosaur has unique foods and toys that affect their stats differently - some items give bigger boosts!");
+            Console.WriteLine("3. Be careful when playing with your dinosaur - activities will reduce their Sleep stat.");
+            Console.WriteLine("4. Keep an eye on all stats - if any of them drops to 0, your dinosaur will not survive!");
+            Console.WriteLine("5. It is recommended to play the game in Full Screen mode for the best experience!");
+            Console.WriteLine("6. Remember that dinosaurs might get hungry after waking up from sleep!");
+            Console.WriteLine("\nPress any key to return to the main menu...");
+            Console.ReadKey();
         }
     }
 } 

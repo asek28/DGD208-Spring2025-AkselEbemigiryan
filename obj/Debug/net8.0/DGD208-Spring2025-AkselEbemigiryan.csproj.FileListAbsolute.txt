@@ -12,3 +12,17 @@ C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\
 C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.pdb
 C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.genruntimeconfig.cache
 C:\Users\aksel\source\repos\DGD208-Spring2025-AkselEbemigiryan\obj\Debug\net8.0\ref\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.exe
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.deps.json
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.runtimeconfig.json
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\bin\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.pdb
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.AssemblyInfoInputs.cache
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.AssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\refint\DGD208-Spring2025-AkselEbemigiryan.dll
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.pdb
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\DGD208-Spring2025-AkselEbemigiryan.genruntimeconfig.cache
+C:\Users\ASUS\OneDrive\Masaüstü\DGD208-Spring2025-AkselEbemigiryan-main\DGD208-Spring2025-AkselEbemigiryan-main\obj\Debug\net8.0\ref\DGD208-Spring2025-AkselEbemigiryan.dll
