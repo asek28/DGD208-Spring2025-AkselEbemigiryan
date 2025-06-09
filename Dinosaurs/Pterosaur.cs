@@ -17,7 +17,8 @@ namespace DinosaurSimulator.Dinosaurs
             return new List<Food>
             {
                 new Food("Fish", FoodType.Fish, 25, 5, -5),
-                new Food("Insects", FoodType.Insects, 20, 10, -5)
+                new Food("Insects", FoodType.Insects, 20, 10, -5),
+                new Food("Sweet Nectar", FoodType.Special, 30, 20, -8)
             };
         }
 
@@ -26,16 +27,21 @@ namespace DinosaurSimulator.Dinosaurs
             return new List<Toy>
             {
                 new Toy("Flying Disc", ToyType.Ball, -5, 35, -15),
-                new Toy("Wind Chimes", ToyType.Special, -2, 20, -5)
+                new Toy("Wind Chimes", ToyType.Special, -2, 20, -5),
+                new Toy("Cloud Hoop", ToyType.Special, -4, 40, -10)
             };
         }
 
-        public override void UpdateStats()
+        public override bool UpdateStats()
         {
             // Pterosaur stats decay moderately due to its active flying lifestyle
-            UpdateStat(-1, StatType.Feed);
-            UpdateStat(-1, StatType.Fun);
-            UpdateStat(-1, StatType.Sleep);
+            if (UpdateStat(-1, StatType.Feed) ||
+                UpdateStat(-1, StatType.Fun) ||
+                UpdateStat(-1, StatType.Sleep))
+            {
+                return true;
+            }
+            return false;
         }
     }
 } 

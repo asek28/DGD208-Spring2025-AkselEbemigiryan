@@ -16,8 +16,8 @@ namespace DinosaurSimulator.Managers
     {
         private readonly List<Dinosaur> dinosaurs = new List<Dinosaur>();
         private bool isGameRunning = true;
-        private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        private const string CREATOR_NAME = "Aksel Ebemigiryan";
+        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private const string CREATOR_NAME = "Aksel Ebemıgıryan";
         private const string STUDENT_NUMBER = "225040094";
         private const string GAME_NAME = "DinosaurSimulator";
 
@@ -27,7 +27,7 @@ namespace DinosaurSimulator.Managers
             Console.WriteLine("Let's see if you have what it takes to care for these prehistoric creatures!");
 
             // Start the stat decay background task
-            _ = Task.Run(() => StatDecayLoop(cancellationTokenSource.Token));
+            _ = Task.Run(async () => await StatDecayLoop(cancellationTokenSource.Token));
 
             while (isGameRunning)
             {
@@ -44,21 +44,21 @@ namespace DinosaurSimulator.Managers
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                foreach (var dino in dinosaurs.Where(d => d.IsAlive))
+                foreach (var dino in dinosaurs.Where(d => d.IsAlive).ToList())
                 {
                     dino.UpdateStats();
                 }
 
                 // Sleep stat decreases every 3.5 seconds (was 5)
                 await Task.Delay(3500, cancellationToken);
-                foreach (var dino in dinosaurs.Where(d => d.IsAlive))
+                foreach (var dino in dinosaurs.Where(d => d.IsAlive).ToList())
                 {
                     dino.UpdateStat(-1, StatType.Sleep);
                 }
 
                 // Feed and Fun decrease every 2.25 seconds (was 2.5)
                 await Task.Delay(2250, cancellationToken);
-                foreach (var dino in dinosaurs.Where(d => d.IsAlive))
+                foreach (var dino in dinosaurs.Where(d => d.IsAlive).ToList())
                 {
                     dino.UpdateStat(-1, StatType.Feed);
                     dino.UpdateStat(-1, StatType.Fun);
@@ -270,9 +270,13 @@ namespace DinosaurSimulator.Managers
                 Console.WriteLine($"\nPlaying with {dino.Name} using {selectedToy.Name}...");
                 await Task.Delay(2000);
 
-                dino.UpdateStat(selectedToy.FeedEffect, StatType.Feed);
-                dino.UpdateStat(selectedToy.FunEffect, StatType.Fun);
-                dino.UpdateStat(selectedToy.SleepEffect, StatType.Sleep);
+                if (dino.UpdateStat(selectedToy.FeedEffect, StatType.Feed) ||
+                    dino.UpdateStat(selectedToy.FunEffect, StatType.Fun) ||
+                    dino.UpdateStat(selectedToy.SleepEffect, StatType.Sleep))
+                {
+                    isGameRunning = false;
+                    return;
+                }
 
                 if (dino.IsAlive)
                 {
@@ -307,9 +311,13 @@ namespace DinosaurSimulator.Managers
 
                 EatAnimation.ShowEatingDino(dino.Name, foodEmoji, selectedFood.Name);
 
-                dino.UpdateStat(selectedFood.FeedEffect, StatType.Feed);
-                dino.UpdateStat(selectedFood.FunEffect, StatType.Fun);
-                dino.UpdateStat(selectedFood.SleepEffect, StatType.Sleep);
+                if (dino.UpdateStat(selectedFood.FeedEffect, StatType.Feed) ||
+                    dino.UpdateStat(selectedFood.FunEffect, StatType.Fun) ||
+                    dino.UpdateStat(selectedFood.SleepEffect, StatType.Sleep))
+                {
+                    isGameRunning = false;
+                    return;
+                }
 
                 if (!dino.IsAlive)
                 {
@@ -323,12 +331,20 @@ namespace DinosaurSimulator.Managers
             if (!dino.IsAlive) return;
 
             SleepAnimation.ShowSleepingDino(dino.Name);
-            dino.UpdateStat(100 - dino.Sleep, StatType.Sleep);
+            if (dino.UpdateStat(100 - dino.Sleep, StatType.Sleep))
+            {
+                isGameRunning = false;
+                return;
+            }
             
             // Dinosaur wakes up hungry
             Random random = new Random();
             int hungerIncrease = random.Next(10, 16); // Random value between 10-15
-            dino.UpdateStat(-hungerIncrease, StatType.Feed);
+            if (dino.UpdateStat(-hungerIncrease, StatType.Feed))
+            {
+                isGameRunning = false;
+                return;
+            }
             Console.WriteLine($"{dino.Name} wakes up feeling a bit hungry...");
             Thread.Sleep(2000);
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DinosaurSimulator.Enums;
 using DinosaurSimulator.Models;
+using System.Threading;
 
 namespace DinosaurSimulator.Models
 {
@@ -55,12 +56,14 @@ namespace DinosaurSimulator.Models
         /// <summary>
         /// Updates the dinosaur's stats over time
         /// </summary>
-        public abstract void UpdateStats();
+        /// <returns>True if the player wants to restart, false otherwise</returns>
+        public abstract bool UpdateStats();
 
         /// <summary>
         /// Updates a stat value and checks for death
         /// </summary>
-        public void UpdateStat(int statChange, StatType statType)
+        /// <returns>True if the player wants to restart, false otherwise</returns>
+        public bool UpdateStat(int statChange, StatType statType)
         {
             switch (statType)
             {
@@ -74,20 +77,24 @@ namespace DinosaurSimulator.Models
                     Sleep += statChange;
                     break;
             }
-            CheckForDeath();
+            return CheckForDeath();
         }
 
         /// <summary>
         /// Checks if the dinosaur has died due to low stats
         /// </summary>
-        private void CheckForDeath()
+        private bool CheckForDeath()
         {
             if (Feed <= 0 || Fun <= 0 || Sleep <= 0)
             {
                 IsAlive = false;
                 Console.WriteLine($"\n{Name} the {Type} has died due to neglect!");
                 Console.WriteLine($"Final Stats - Feed: {Feed}, Fun: {Fun}, Sleep: {Sleep}");
+                Thread.Sleep(1000);
+                GameOverAnimation.ShowGameOver(Name);
+                Environment.Exit(0);
             }
+            return false;
         }
 
         /// <summary>
